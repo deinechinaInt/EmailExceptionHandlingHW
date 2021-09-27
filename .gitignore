@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/EmailExceptionHandlingHW/EmailExceptionHandlingHW/bin/Debug
+/EmailExceptionHandlingHW/EmailExceptionHandlingHW/obj/Debug
+/EmailExceptionHandlingHW/.vs/EmailExceptionHandlingHW/v16
