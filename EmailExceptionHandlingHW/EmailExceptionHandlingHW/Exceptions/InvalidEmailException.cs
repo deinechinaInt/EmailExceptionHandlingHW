@@ -4,7 +4,7 @@ namespace EmailExceptionHandlingHW.Exceptions
 {
     public class InvalidEmailException : Exception
     {
-        public InvalidEmailException(string recipientEmail):base($"Cannot send email to your friend. Email address \"{recipientEmail}\" is not valid")
+        public InvalidEmailException(Email email) : base($"Cannot send email (Content: {email.EmailText}) to your friend.\nEmail address \"{email.RecipientEmail}\" is not valid")
         {
         }
     }

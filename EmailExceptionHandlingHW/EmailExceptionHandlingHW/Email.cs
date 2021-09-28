@@ -10,23 +10,12 @@ namespace EmailExceptionHandlingHW
                                    + "@"
                                    + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z"; 
 
-        public const int MaxLength = 30;       
+        public const int MaxLength = 50;       
 
         public string EmailText { get; set; }
 
-        public string RecipientEmail { get; set; }
-
-
-        public Email()
-        {
-
-        }
-
-        public Email(string emailText)
-        {
-            EmailText = emailText;
-        }
-
+        public string RecipientEmail { get; set; }    
+        
         public override string ToString()
         {
             return $"Email text: {EmailText}";
@@ -37,7 +26,7 @@ namespace EmailExceptionHandlingHW
             var recipientEmailRegex = new Regex(_regularExToValidateRecipient);
             if (!recipientEmailRegex.IsMatch(RecipientEmail))
             {
-                throw new InvalidEmailException(RecipientEmail);
+                throw new InvalidEmailException(this);
             }
         }
 
@@ -57,10 +46,8 @@ namespace EmailExceptionHandlingHW
 
             foreach(var text in splittedTexts)
             {
-                var newEmail = new Email(text)
-                {
-                    RecipientEmail = RecipientEmail
-                };
+                var newEmail = new Email { EmailText = text, RecipientEmail = RecipientEmail };
+              
                 splittedEmails.Add(newEmail);
             }
             return splittedEmails;
